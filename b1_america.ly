@@ -1,11 +1,32 @@
 \version "2.24.0"
 
+\paper {
+  % Elimina todos los márgenes corporales
+  top-margin = 2\mm
+  bottom-margin = 2\mm
+  left-margin = 4\mm
+  right-margin = 2\mm
+  
+  % Elimina los espacios reservados para encabezados y pies de página
+  header-margin = 0\mm
+  footer-margin = 0\mm
+  oddHeaderMarkup = ##f
+  evenHeaderMarkup = ##f
+  oddFooterMarkup = ##f
+  evenFooterMarkup = ##f
+}
+
+rojoON  = { \override NoteHead.color = #red \override Stem.color = #red }
+rojoOFF = { \revert NoteHead.color \revert Stem.color }
+
 \header {
   title = "América"
   subtitle = "West Side Story"
   composer = "Leonard Bernstein"
   arranger = "Arreglo: Daniel Casado"
-  tagline = ##f
+  % tagline = ##f
+  tagline = "tagline"
+  arranger = "Arreglo: Daniel Casado"
 }
 
 % Pista "Band 1" del archivo .gp (Guitar Pro 8). Afinación de bandurria (G#3 C#4 F#4 B4 E5 A5)
@@ -14,7 +35,7 @@ bandurriaTuning = \stringTuning <gis cis' fis' b' e'' a''>
 notasBandurria = {  
   \tempo 4 = 130
   % 1
-  \time 6/8
+  \time 6/8 r2. |
   % 2
   \time 3/4 r2. |
   % 3
@@ -48,7 +69,7 @@ notasBandurria = {
   % 17
   \mark "C" \time 6/8 \mp e''8\2 a''8\1 g''8\2 e''8\2 a''8\1 g''8\2 |
   % 18
-  \time 3/4 e''4 e''8\3->\glissando c''4.\3 |
+  \time 3/4 e''4 \rojoON e''8\3->\glissando c''4.\3 \rojoOFF|
   % 19
   \time 6/8 e'8\5 a'8\4 g'8\4 c''8\3 a'8\4 g'8\4 |
   % 20
@@ -258,31 +279,213 @@ notasBandurria = {
 
 }
 
+\language "espanol"
+
+notasBandUno = \relative sol'' {
+  \time 6/8 \tempo 4 = 130 r2.\mf |  % 1
+  \time 3/4 r |  % 2
+  \time 6/8 r |  % 3
+  \time 3/4 r |  % 4
+  \time 6/8 sol8\2-.\p sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 5
+  \time 3/4 la4\1 fa\2 do\3 |  % 6
+  \time 6/8 sol'8\2-. sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 7
+  \time 3/4 re4\1 si\1 sol\2 |  % 8
+  \time 6/8 las8\1-. las\1-. las\1-. res\1-. res\1-. res\1-. |  % 9
+  \time 3/4 re4\1 las\1 fa\2 |  % 10
+  \time 6/8 res8\3-. res\3-. res\3-. sols\2-. sols\2-. sols\2-. |  % 11
+  \time 3/4 sol4\2\< mi'8\1-.\f r do,4:16\3~ ^\markup { "dim." } |  % 12
+  \time 6/8 do2.:16\3~\> |  % 13
+  \time 3/4 do2.:16\3\> |  % 14
+  \time 6/8 r |  % 15
+  \time 3/4 r \bar "||" |  % 16
+  \time 6/8 \mark "C" mi8\2\mp la\1 sol\2 mi\2 la\1 sol\2 |  % 17
+  \time 3/4 mi4\2 mi8\3->\glissando do4.\3 |  % 18
+  \time 6/8 mi,8\5 la\4 sol\4 do\3 la\4 sol\4 |  % 19
+  \time 3/4 si4\3 si8\3-> la4.\4 |  % 20
+  r2. |  % 21
+  \time 6/8 la'8\1\mf re\1 do\1 la\1 re\1 do\1 |  % 22
+  \time 3/4 la4\1 la8\2->\glissando fa4.\2 |  % 23
+  \time 6/8 r2. |  % 24
+  \time 3/4 r |  % 25
+  \time 6/8 r |  % 26
+  sol8\2-.\mp sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 27
+  la4\1 fa\2 do\3 |  % 28
+  sol'8\2-. sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 29
+  re4\1 si\1 sol\2 |  % 30
+  las8\1-. las\1-. las\1-. res\1-. res\1-. res\1-. |  % 31
+  re4\1 las\1 fa\2 |  % 32
+  res8\3-. res\3-. res\3-. sols\2-. sols\2-. sols\2-. |  % 33
+  sol4\2\< ^\markup { "cresc." } mi'8\1-.\f\> r do,4:16\3~ ^\markup { "dim." } |  % 34
+  do2.:16\3~\> |  % 35
+  do2.:16\3\> |  % 36
+  \compressMMRests { R2.*2 } |  % 37-38
+  mi8\2\mp la\1 sol\2 mi\2 la\1 sol\2 |  % 39
+  mi4\2 mi8\3->\glissando do4.\3 |  % 40
+  mi,8\5 la\4 sol\4 do\3 la\4 sol\4 |  % 41
+  si4\3 si8\3-> la4.\4 |  % 42
+  r2. |  % 43
+  la'8\1\mf re\1 do\1 la\1 re\1 do\1 |  % 44
+  la4\1 la8\2->\glissando fa4.\2 |  % 45
+  \compressMMRests { R2.*3 } |  % 46-48
+  sol8\2-.\mp sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 49
+  la4\1 fa\2 do\3 |  % 50
+  sol'8\2-. sol\2-. sol\2-. do\1-. do\1-. do\1-. |  % 51
+  re4\1 si\1 sol\2 |  % 52
+  las8\1-. las\1-. las\1-. res\1-. res\1-. res\1-. |  % 53
+  re4\1 las\1 fa\2 |  % 54
+  res8\3-. res\3-. res\3-. sols\2-. sols\2-. sols\2-. |  % 55
+  sol4\2\< ^\markup { "cresc." } mi'8\1-.\f\> r do,4:16\3~ ^\markup { "dim." } |  % 56
+  do2.:16\3~\> |  % 57
+  do2:16\3\> do8\3\> dos\3\> \bar "||" |  % 58
+  mib\3->\mf ^\markup { "(rítmico)" } mib\3 mib\3 mib\3-> mib\3 mib\3 |  % 59
+  mib\3-> fa\2 solb\2-> lab\2 solb\2-> fa\2 |  % 60
+  mib\3-> fa\2 solb\2 lab\2-> solb\2 fa\2 |  % 61
+  mib\3 r mib\3->\f re4.:32\3~ |  % 62
+  re2.:32\3 |  % 63
+  r2 re8\3-. mib\3-. |  % 64
+  fa\2-> re\3 sib\4 fa'\2-> re\3 sib\4 |  % 65
+  \grace { la'16\2 } sib4\2-> \grace { la16\2 } sib4\2-> \grace { la16\2 } sib4\2-> |  % 66
+  \grace { la32\2 } sib8\2-> lab\2 fa\2 \grace { la32\2 } sib8\2-> lab\2 fa\2 |  % 67
+  sol\2 r \grace { solb32\2 } sol8\2-> mi4.:32\2~ |  % 68
+  mi2.:32\2 |  % 69
+  r2 do8\3-. re\3-. |  % 70
+  mi\2-> mi\2 mi\2 mi\2-> mi\2 mi\2 |  % 71
+  mi\2-> fa\2 sol\2-> la\1 sol\2-> fa\2 |  % 72
+  mi\2-> fa\2 sol\2 la\1-> sol\2 fa\2 |  % 73
+  mi\2 r mi\2-> re4.:32\3~ |  % 74
+  re2:32\3 re8\3 mi\2 |  % 75
+  \grace { mi32\2 } fa8\2-> re\3 sib\4 \grace { mi32\2 } fa8\2-> re\3 sib\4 |  % 76
+  \grace { la'32\2 } sib4\2-> \grace { la32\2 } sib4\2-> \grace { la32\2 } sib4\2-> |  % 77
+  \grace { la32\2 } sib8\2-> lab\2 fa\2 \grace { la32\2 } sib8\2-> lab\2 fa\2 |  % 78
+  \grace { la32\2 } sib8\2-> r sib\2-> lab4.\3\glissando |  % 79
+  mib8\3->\ff ^\markup { "ff   B2 (en Lab M)" } mib\3 mib\3 lab\2-> lab\2 lab\2 |  % 80
+  <reb,\3-> fa\2>4 <lab\4-> reb\3> <fa\5-> lab\4> |  % 81
+  mib'8\3-> mib\3 mib\3 lab\2-> lab\2 lab\2 |  % 82
+  <sol\2-> sib\1>4 <mib\3-> sol\2> <sib\4-> mib\3> |  % 83
+  solb'8\2-> solb\2 solb\2 si\1-> si\1 si\1 |  % 84
+  <solb\2-> sib\1>4 <reb\3-> solb\2> <sib\4-> reb\3> |  % 85
+  si8\3-> si\3 si\3 mi\2-> mi\2 mi\2 |  % 86
+  lab4\2\< do8\1\< r r sib16\1\f si\1 \bar "||" |  % 87
+  do2.:16\1 ^\markup { "A3" } |  % 88
+  \compressMMRests { R2.*3 } |  % 89-91
+  mi,8\2\p ^\markup { "C1   p" } la\1 sol\2 mi\2 la\1 sol\2 |  % 92
+  mi4\2 mi8\3->\glissando do4.\3 |  % 93
+  \compressMMRests { R2.*3 } |  % 94-96
+  la'8\1 re\1 do\1 la\1 re\1 do\1 |  % 97
+  la4\1 la8\2->\glissando fa4.\2 |  % 98
+  \compressMMRests { R2.*2 } |  % 99-100
+  sol,8\4-.\> si\3-.\> re\3-.\> sol\2-.\> si\1-.\> re\1-.\> |  % 101
+  sol,\2-^\pp ^\markup { "pp    B3 (en Do M)" } sol\2-. sol\2-. do\1-^ do\1-. do\1-. |  % 102
+  la4\1-^ fa\2-^ do\3-^ |  % 103
+  sol'8\2-^ sol\2-. sol\2-. do\1-^ do\1-. do\1-. |  % 104
+  re4\1-^ si\1-^ sol\2-^ |  % 105
+  las8\1-^ las\1-. las\1-. res\1-^ res\1-. res\1-. |  % 106
+  re4\1-^ las\1-^ fa\2-^ |  % 107
+  res8\3-^ res\3-. res\3-. sols\2-^ sols\2-. sols\2-. |  % 108
+  sol4\2-^ mi'8\1-^ r do,4\3\ff\glissando |  % 109
+  si'8\2-2 ^\markup { "B4 (en Mi M)" } si\2-. si\2-. mi\1-^ mi\1-. mi\1-. |  % 110
+  dos4\2->-3 la\3-> mi\4-> |  % 111
+  si'8\2-^ si\2-. si\2-. mi\1-^ mi\1-. mi\1-. |  % 112
+  fas4\1-3 res\1-1 si\2-2 |  % 113
+  <re,\3-^ re'\2>8 ^\markup { "octava opcional" } <re\3-. re'\2> <re\3-. re'\2> <sol\2-^ sol'\1> <sol\2-. sol'\1> <sol\2-. sol'\1> |  % 114
+  <fas\2 fas'\1>4 <re\3 re'\2> <la\4 la'\3> |  % 115
+  <sol\4-^ sol'\3>8 <sol\4-. sol'\3> <sol\4-. sol'\3> <do\3-^ do'\2> <do\3-. do'\2> <do\3-. do'\2> |  % 116
+  si4\3-> sols'\2-> sols8\2-. la\1-. |  % 117
+  si\1-^ ^\markup { "D1 (en Mi M)" } si\1-. si\1-. si\1-^ si\1-. si\1-. |  % 118
+  si\1-^ dos\1-. re\1-^ mi\1-. re\1-^ dos\1-. |  % 119
+  si\1-^ dos\1-. re\1-. mi\1-^ re\1-. dos\1-. |  % 120
+  si4\1-. mi8\1\glissando <mi,,\5-- sols\4 si\3 mi\2> r r |  % 121
+
+  % NOTAS DE INTERPRETACIÓN
+  % Compás 12: Hairpin (Crescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 13: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 14: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 18: Glissando (Slide flags=2).
+  % Compás 23: Glissando (Slide flags=2).
+  % Compás 34: Hairpin (Crescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 34: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 35: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 36: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 40: Glissando (Slide flags=2).
+  % Compás 45: Glissando (Slide flags=2).
+  % Compás 56: Hairpin (Crescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 56: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 57: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 58: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 66: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 67: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 68: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 76: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 77: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 78: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 79: Adorno (grace note) antes de un evento; revisar octava relativa.
+  % Compás 79: Glissando (Slide flags=8); slide de salida sin nota destino: LilyPond lo dibuja hacia el evento siguiente (sin línea si es silencio), revisar.
+  % Compás 87: Hairpin (Crescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 93: Glissando (Slide flags=2).
+  % Compás 98: Glissando (Slide flags=2).
+  % Compás 101: Hairpin (Decrescendo) iniciado sin marca de cierre explícita en el archivo; no se añadió \!.
+  % Compás 102: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 103: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 104: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 105: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 106: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 107: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 108: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 109: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 109: Glissando (Slide flags=8); slide de salida sin nota destino: LilyPond lo dibuja hacia el evento siguiente (sin línea si es silencio), revisar.
+  % Compás 110: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 112: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 114: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 116: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 118: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 119: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 120: Accent=9 sin verificar (marca aplicada, revisar).
+  % Compás 121: Glissando (Slide flags=4); slide de salida sin nota destino: LilyPond lo dibuja hacia el evento siguiente (sin línea si es silencio), revisar.
+  % Compás 121: Accent=4 sin verificar (marca aplicada, revisar).
+}
+
 \score {
   <<
+    %\new TabStaff {
+    %  \set TabStaff.stringTunings = #bandurriaTuning
+    %  \override TabNoteHead.font-size = #-1
+    %  \tabFullNotation
+    %  \notasBandurria
+    %}
+    %\new NoteNames {
+    %  \set printNotesLanguage = "espanol"
+    %  \override NoteName.font-size = #-3
+    %  \notasBandurria
+    %}
+
     \new TabStaff {
       \set TabStaff.stringTunings = #bandurriaTuning
       \override TabNoteHead.font-size = #-1
       \tabFullNotation
-      \notasBandurria
+      \notasBandUno
     }
-    \new NoteNames {
-     \set printNotesLanguage = "espanol"
-     \override NoteName.font-size = #-3
-      \notasBandurria
-    }
+
  
   >>
   \layout {
     \context {
       \Score
-    %      \override BarNumber.break-visibility = #all-visible
-    %\override Score.BarNumber.break-visibility = #end-of-line-invisible
-    \override BarNumber.break-visibility = ##(#f #t #t)
-    barNumberVisibility = #(modulo-bar-number-visible 3 1)
-\omit Staff.DynamicText
-\omit Staff.Hairpin
+      %      \override BarNumber.break-visibility = #all-visible
+      %\override Score.BarNumber.break-visibility = #end-of-line-invisible
+      \override BarNumber.break-visibility = ##(#f #t #t)
+      barNumberVisibility = #(modulo-bar-number-visible 3 1)
+      \omit Staff.DynamicText
+      \omit Staff.Hairpin
+      \consists "Fingering_engraver"
+      \override Fingering.color = #red
     }
+    \context {
+      \TabStaff
+      % Si usas tablatura, esto también los pinta de rojo ahí
+      \override Fingering.color = #red
+    }
+
+    
   }
   \midi { }
 }
