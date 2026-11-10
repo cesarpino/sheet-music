@@ -299,7 +299,7 @@ notasBandUno = \relative sol'' {
   \time 6/8 r |  % 15
   \time 3/4 r \bar "||" |  % 16
   \time 6/8 \mark "C" mi8\2\mp la\1 sol\2 mi\2 la\1 sol\2 |  % 17
-  \time 3/4 mi4\2 mi8\3->\glissando do4.\3 |  % 18
+  \time 3/4 mi4\2 mi8\3->-3\glissando do4.\3 |  % 18
   \time 6/8 mi,8\5 la\4 sol\4 do\3 la\4 sol\4 |  % 19
   \time 3/4 si4\3 si8\3-> la4.\4 |  % 20
   r2. |  % 21
@@ -344,8 +344,8 @@ notasBandUno = \relative sol'' {
   re2.:32\3 |  % 63
   r2 re8\3-. mib\3-. |  % 64
   fa\2-> re\3 sib\4 fa'\2-> re\3 sib\4 |  % 65
-  \grace { la'16\2 } sib4\2-> \grace { la16\2 } sib4\2-> \grace { la16\2 } sib4\2-> |  % 66
-  \grace { la32\2 } sib8\2-> lab\2 fa\2 \grace { la32\2 } sib8\2-> lab\2 fa\2 |  % 67
+  \grace { la'16\1 } sib4\1-> \grace { la16\1 } sib4\1-> \grace { la16\1 } sib4\1-> |  % 66
+  \grace { la32\1 } sib8\1-> lab\1 fa\1 \grace { la32\1 } sib8\1-> lab\2 fa\2 |  % 67
   sol\2 r \grace { solb32\2 } sol8\2-> mi4.:32\2~ |  % 68
   mi2.:32\2 |  % 69
   r2 do8\3-. re\3-. |  % 70
@@ -355,9 +355,9 @@ notasBandUno = \relative sol'' {
   mi\2 r mi\2-> re4.:32\3~ |  % 74
   re2:32\3 re8\3 mi\2 |  % 75
   \grace { mi32\2 } fa8\2-> re\3 sib\4 \grace { mi32\2 } fa8\2-> re\3 sib\4 |  % 76
-  \grace { la'32\2 } sib4\2-> \grace { la32\2 } sib4\2-> \grace { la32\2 } sib4\2-> |  % 77
-  \grace { la32\2 } sib8\2-> lab\2 fa\2 \grace { la32\2 } sib8\2-> lab\2 fa\2 |  % 78
-  \grace { la32\2 } sib8\2-> r sib\2-> lab4.\3\glissando |  % 79
+  \grace { la'32\1 } sib4\1-> \grace { la32\1 } sib4\1-> \grace { la32\1 } sib4\1-> |  % 77
+  \grace { la32\1 } sib8\1-> lab\1 fa\1 \grace { la32\1 } sib8\1-> lab\2 fa\2 |  % 78
+  \grace { la32\1 } sib8\1-> r sib\1-> lab4.\2\glissando |  % 79
   mib8\3->\ff ^\markup { "ff   B2 (en Lab M)" } mib\3 mib\3 lab\2-> lab\2 lab\2 |  % 80
   <reb,\3-> fa\2>4 <lab\4-> reb\3> <fa\5-> lab\4> |  % 81
   mib'8\3-> mib\3 mib\3 lab\2-> lab\2 lab\2 |  % 82
