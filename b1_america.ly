@@ -464,6 +464,11 @@ notasBandUno = \relative sol'' {
       \tabFullNotation
       \notasBandUno
     }
+    \new NoteNames {
+      %\set printNotesLanguage = "espanol"
+      \override NoteName.font-size = #-3
+      \notasBandUno
+    }
 
  
   >>
